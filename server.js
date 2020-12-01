@@ -1,8 +1,16 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const routes = require("./routes");
+const connectDB = require("./config/db");
+const dotenv = require("dotenv");
 
-const PORT = process.env.PORT || 3001;
+// Load config
+dotenv.config({ path: "./config/config.env" });
+
+const PORT = process.env.PORT || 8080;
+
+connectDB();
+
 const app = express();
 
 //middleware
@@ -16,11 +24,6 @@ if (process.env.NODE_ENV === "production") {
 
 // Define API routes
 app.use(routes);
-
-// Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/googlebooks", {
-  useNewUrlParser: true,
-});
 
 app.listen(PORT, () => {
   console.log(`🌎 ==> API server now on port ${PORT}!`);

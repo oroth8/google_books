@@ -24,6 +24,7 @@
   "homepage": "https://github.com/oroth8/google_books#readme",
   "dependencies": {
     "axios": "^0.21.0",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "if-env": "^1.0.4",
     "mongoose": "^5.11.0"
